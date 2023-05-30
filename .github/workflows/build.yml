@@ -4,6 +4,9 @@ on:
     branches:
       - master
       - ci-init
+  pull_request:
+    branches:
+      - master
 
 jobs:
   build-and-test:
@@ -11,6 +14,7 @@ jobs:
       matrix:
         node-version: [lts/*, latest]
         os: ['windows-latest', 'ubuntu-latest']
+      fail-fast: false
     name: Build and Test
     runs-on: ${{ matrix.os }}
     steps:
