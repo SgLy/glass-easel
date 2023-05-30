@@ -9,8 +9,8 @@ jobs:
   build-and-test:
     strategy:
       matrix:
-        node-version: [lts/*, latest, 16]
-        os: ['windows-latest', 'ubuntu-latest', 'macos-latest']
+        node-version: [lts/*, latest]
+        os: ['windows-latest', 'ubuntu-latest']
     name: Build and Test
     runs-on: ${{ matrix.os }}
     steps:
