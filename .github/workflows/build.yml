@@ -29,8 +29,9 @@ jobs:
           toolchain: stable
           targets: wasm32-unknown-unknown
       - name: Setup wasm-pack
-        run: |
-          cargo install wasm-pack
+        uses: jetli/wasm-pack-action@v0.4.0
+        with:
+          version: 'latest'
       - name: Build
         run: |
           pnpm -r run build
