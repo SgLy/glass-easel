@@ -9,19 +9,23 @@ jobs:
   build-and-test:
     strategy:
       matrix:
-        node-version: [lts, latest, 16]
+        node-version: [lts/*, latest, 16]
         os: ['windows-latest', 'ubuntu-latest', 'macos-latest']
     name: Build and Test
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout master
         uses: actions/checkout@v3
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: latest
       - name: Setup node 16.x
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'pnpm'
-      - name: Setup pnpm
+      - name: Install
         uses: pnpm/action-setup@v2
         with:
           version: latest
