@@ -55,9 +55,21 @@ const getCurrentTimeStamp = () => {
   return ts - relativeTimeStamp
 }
 
+/**
+ * Event response settings.
+ */
 export const enum MutLevel {
+  /**
+   * Regular response;
+   */
   None = 0,
+  /**
+   * Mutually exclusive response, only the first mutually exclusive response will be executed in a bubbling;
+   */
   Mut = 1,
+  /**
+   * Final response, event bubbling will be stopped, and the default event behavior will be prevented.
+   */
   Final = 2,
 }
 
